@@ -16,6 +16,7 @@ import net.pableras.sichefbeta.adapters.CustomAdapterNube
 import net.pableras.sichefbeta.model.Receta
 import net.pableras.sichefbeta.model.RecetaAux
 import net.pableras.sichefbeta.model.User
+import net.pableras.sichefbeta.views.detail.DetailActivity
 import net.pableras.sichefbeta.views.home.HomeActivity
 
 class RecetasNubeActivity : AppCompatActivity() {
@@ -73,8 +74,8 @@ class RecetasNubeActivity : AppCompatActivity() {
 
     fun onClickNube(v: View){
         val receta = v.tag as RecetaAux
-        //val intent = Intent(this, RecetaLocalActivity::class.java)
+        val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("receta", receta)
-        //startActivity(intent)
+        startActivity(intent)
     }
 }

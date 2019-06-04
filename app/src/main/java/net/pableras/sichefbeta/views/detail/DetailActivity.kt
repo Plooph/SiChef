@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         recetasFS = FirebaseFirestore.getInstance()
         receta = Receta()
         receta = intent.getSerializableExtra("receta") as Receta
-        //getComentarios(receta)
+        getComentarios(receta)
 
         sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
