@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="receta" type="net.pableras.sichefbeta.model.Receta"/>
+    </data>
+<FrameLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             tools:context=".views.detail.fragment.RecetaFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".views.recetaslocal.ui.main.PlaceholderFragment">
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/titulo_de_la_receta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tv10" android:layout_weight="6"
+                        android:textColor="@color/colorBase"/>
+                <TextView
+                        android:text="@{receta.title}"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tvTitleDetail" android:layout_weight="4"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:text="@string/comensales_mesa"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="4"/>
+                <TextView
+                        android:text="@{receta.comensales}"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/tvComensalesDetail" android:layout_weight="8"/>
+            </LinearLayout>
+            <TextView
+                    android:text="@string/ingredientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView14"/>
+            <TextView
+                    android:text="@{receta.ingredientes}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvIngredientesDetail"/>
+            <TextView
+                    android:text="@string/preparaci_n"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView16"/>
+            <TextView
+                    android:text="@{receta.preparacion}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvPreparacionDetail"/>
+            <TextView
+                    android:text="@string/observaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView18"/>
+            <TextView
+                    android:text="@{receta.observaciones}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/tvObservacionesDetail"/>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>
+</layout>
