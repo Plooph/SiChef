@@ -37,3 +37,8 @@ data class RecetaAux(
     var imagens: String = "",
     var comentarios: ArrayList<Comentario> = ArrayList()
 ):Serializable
+
+data class listComent(
+    var comentarios: ArrayList<Comentario> = ArrayList()
+):Serializable
+

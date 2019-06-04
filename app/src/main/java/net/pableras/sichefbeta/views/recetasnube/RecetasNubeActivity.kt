@@ -48,11 +48,11 @@ class RecetasNubeActivity : AppCompatActivity() {
                 return@EventListener
             }
 
-            val recetasAux = ArrayList<RecetaAux>()
+            val recetasAux = ArrayList<Receta>()
             for (doc in value!!) {
                 val receta = doc.toObject(Receta::class.java)
                 if (receta.uid != user.id) {
-                    val recetaAux = doc.toObject(RecetaAux::class.java)
+                    val recetaAux = doc.toObject(Receta::class.java)
                     recetasAux.add(recetaAux)
                     //Log.d(HomeActivity.TAG, recetasAux.toString())
                 }
@@ -67,13 +67,13 @@ class RecetasNubeActivity : AppCompatActivity() {
         rvRecetNube.adapter = adapter
     }
 
-    fun pintarArray(recetasAux: ArrayList<RecetaAux>) {
+    fun pintarArray(recetasAux: ArrayList<Receta>) {
         //llama a la funcion que actualiza el RV
         adapter.setRecetasNube(recetasAux)
     }
 
     fun onClickNube(v: View){
-        val receta = v.tag as RecetaAux
+        val receta = v.tag as Receta
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra("receta", receta)
         startActivity(intent)

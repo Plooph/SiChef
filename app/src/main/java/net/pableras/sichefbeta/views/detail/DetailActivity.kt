@@ -36,7 +36,7 @@ class DetailActivity : AppCompatActivity() {
         recetasFS = FirebaseFirestore.getInstance()
         receta = Receta()
         receta = intent.getSerializableExtra("receta") as Receta
-        getComentarios(receta)
+        //getComentarios(receta)
 
         sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
         val viewPager: ViewPager = findViewById(R.id.view_pager)
@@ -94,7 +94,7 @@ class DetailActivity : AppCompatActivity() {
     private fun addComentario() {
 
         val preferencias = getSharedPreferences("usuario", Context.MODE_PRIVATE)
-        val jsonUser = preferencias.getString(receta.uid,"nosta")
+        val jsonUser = preferencias.getString("usuarioSP","nosta")
         val usuario: User = Gson().fromJson(jsonUser, User::class.java)
         val nick = usuario.nick
 

@@ -243,12 +243,12 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private fun sharedUser(user: User) {
         val preferencias = getSharedPreferences("usuario", Context.MODE_PRIVATE)
 
-        val uid = preferencias.getString(user.id,"nosta")
+        val uid = preferencias.getString("usuarioSP","nosta")
 
         if (uid == "nosta") {
             val jsonUser: String = Gson().toJson(user)
             val editor = preferencias.edit()
-            editor.putString(user.id, jsonUser)
+            editor.putString("usuarioSP", jsonUser)
             editor.apply()
         }
     }

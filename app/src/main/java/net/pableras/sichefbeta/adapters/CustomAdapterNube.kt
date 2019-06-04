@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.rowlocal.view.*
 import kotlinx.android.synthetic.main.rownube.view.*
-import net.pableras.sichefbeta.model.RecetaAux
+import net.pableras.sichefbeta.model.Receta
 
 class CustomAdapterNube (val context: Context,
                          val layout: Int): RecyclerView.Adapter<CustomAdapterNube.ViewHolder>()
 {
-    private var dataList: List<RecetaAux> = emptyList()
+    private var dataList: List<Receta> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -29,13 +29,13 @@ class CustomAdapterNube (val context: Context,
         return dataList.size
     }
 
-    internal fun setRecetasNube(recetas: List<RecetaAux>) {
+    internal fun setRecetasNube(recetas: List<Receta>) {
         this.dataList = recetas
         notifyDataSetChanged()
     }
 
     class ViewHolder(viewlayout: View, val context: Context) : RecyclerView.ViewHolder(viewlayout) {
-        fun bind(dataItem: RecetaAux){
+        fun bind(dataItem: Receta){
             // itemview es el item de diseño
             // al que hay que poner los datos del objeto dataItem
 
