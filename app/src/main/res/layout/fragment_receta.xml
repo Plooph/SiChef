@@ -19,9 +19,10 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
             <LinearLayout
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <TextView
@@ -29,49 +30,81 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv10" android:layout_weight="6"
-                        android:textColor="@color/colorBase"/>
+                        android:background="@color/colorBase"
+                        android:textColor="@color/colorwhite"
+                        android:textSize="24sp"
+                        android:paddingVertical="@dimen/pading"/>
                 <TextView
                         android:text="@{receta.title}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:textAlignment="center"
                         android:id="@+id/tvTitleDetail" android:layout_weight="4"/>
             </LinearLayout>
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp">
                 <TextView
                         android:text="@string/comensales_mesa"
-                        android:layout_width="wrap_content"
+                        android:textSize="18sp"
+                        android:layout_width="93dp"
                         android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="4"/>
                 <TextView
                         android:text="@{receta.comensales}"
+                        android:textSize="16sp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" android:id="@+id/tvComensalesDetail" android:layout_weight="8"/>
             </LinearLayout>
             <TextView
                     android:text="@string/ingredientes"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/textView14"/>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView14"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
             <TextView
                     android:text="@{receta.ingredientes}"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/tvIngredientesDetail"/>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvIngredientesDetail"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"/>
             <TextView
                     android:text="@string/preparaci_n"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_height="wrap_content" android:id="@+id/textView16"/>
             <TextView
                     android:text="@{receta.preparacion}"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="8dp"
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_height="wrap_content" android:id="@+id/tvPreparacionDetail"/>
             <TextView
                     android:text="@string/observaciones"
+                    android:textSize="18sp"
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_height="wrap_content" android:id="@+id/textView18"/>
             <TextView
                     android:text="@{receta.observaciones}"
+                    android:textSize="16sp"
                     android:layout_width="match_parent"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
                     android:layout_height="wrap_content" android:id="@+id/tvObservacionesDetail"/>
         </LinearLayout>
     </ScrollView>

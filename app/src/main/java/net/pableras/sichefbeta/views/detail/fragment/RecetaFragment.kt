@@ -33,13 +33,13 @@ class RecetaFragment : Fragment() {
 
         if (this.arguments != null){
             data = this.arguments!!
-            Log.d("elBundledelfragment", data.toString())
+            //Log.d("elBundledelfragment", data.toString())
         }else{
-            Log.d("elBundledelfragment", "se está creando de nuevo no se porque")
+            //Log.d("elBundledelfragment", "se está creando de nuevo no se porque")
         }
 
         val receta = data.getSerializable("receta") as Receta
-        Log.d("elBundle", receta.toString())
+        //Log.d("elBundle", receta.toString())
 
         binding.receta = receta
 

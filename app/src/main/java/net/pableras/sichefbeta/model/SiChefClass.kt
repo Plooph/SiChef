@@ -23,7 +23,7 @@ data class Comentario(
     var id: String = "",
     var nick: String = "",
     var rid: String = "",
-    var content: String ):Serializable
+    var content: String = ""):Serializable
 
 //clases extra
 data class RecetaAux(
