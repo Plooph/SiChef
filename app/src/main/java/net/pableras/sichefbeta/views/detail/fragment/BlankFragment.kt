@@ -1,5 +1,6 @@
 package net.pableras.sichefbeta.views.detail.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.GridLayoutManager
@@ -12,20 +13,26 @@ import android.view.ViewGroup
 import com.google.firebase.firestore.EventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.fragment_blank.*
 import net.pableras.sichefbeta.R
+import net.pableras.sichefbeta.adapters.CustomAdapterComentarios
 import net.pableras.sichefbeta.model.Comentario
+import org.jetbrains.anko.support.v4.find
 
 /**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [ItemFragment.OnListFragmentInteractionListener] interface.
+ * A simple [Fragment] subclass.
+ * Activities that contain this fragment must implement the
+ * [BlankFragment.OnFragmentInteractionListener] interface
+ * to handle interaction events.
+ * Use the [BlankFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ *
  */
 
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
-class ItemFragment : Fragment() {
-
-    //private lateinit var adapter: MyItemRecyclerViewAdapter
-    private var columnCount = 1
+class BlankFragment : Fragment() {
+    private lateinit var adapter: CustomAdapterComentarios
     private lateinit var idrecet: String
     private lateinit var comentarios: ArrayList<Comentario>
     private lateinit var data: Bundle
@@ -51,17 +58,14 @@ class ItemFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_item_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_blank, container, false)
 
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyItemRecyclerViewAdapter(comentarios)
-            }
-        }
+        val contesto = activity as Context
+
+        adapter = CustomAdapterComentarios(contesto, R.layout.rowcomentario)
+        val rvC = view.findViewById<RecyclerView>(R.id.rvComentarios)
+        rvC.layoutManager = LinearLayoutManager(contesto)
+        rvC.adapter = adapter
 
         return view
     }
@@ -84,7 +88,7 @@ class ItemFragment : Fragment() {
 
         @JvmStatic
         fun newInstance(recetaId: String) =
-            ItemFragment().apply {
+            BlankFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_RECETA_ID, recetaId)
                 }
@@ -107,6 +111,7 @@ class ItemFragment : Fragment() {
                 }
             }
             //Log.d("AALosTengo",  comentarios.toString())
+            adapter.setComentarios(comentarios)
         })
     }
 }

@@ -14,7 +14,7 @@ import net.pableras.sichefbeta.R
 import net.pableras.sichefbeta.model.Comentario
 import net.pableras.sichefbeta.model.Receta
 import net.pableras.sichefbeta.model.User
-import net.pableras.sichefbeta.views.detail.fragment.ItemFragment
+import net.pableras.sichefbeta.views.detail.fragment.BlankFragment
 import net.pableras.sichefbeta.views.detail.fragment.RecetaFragment
 import net.pableras.sichefbeta.views.detail.ui.main.SectionsPagerAdapter
 import net.pableras.sichefbeta.views.nuevareceta.NewRecetaActivity
@@ -59,7 +59,7 @@ class DetailActivity : AppCompatActivity() {
         val recetaId = receta.id
         val idrecet = Bundle()
         idrecet.putString("comentarios", recetaId)
-        val fragmentComentarios = ItemFragment.newInstance(recetaId)
+        val fragmentComentarios = BlankFragment.newInstance(recetaId)
         fragmentComentarios.arguments = idrecet
 
         sectionsPagerAdapter.addFragment(fragmentRecetas)
