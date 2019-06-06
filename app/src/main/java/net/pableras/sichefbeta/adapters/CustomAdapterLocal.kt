@@ -7,10 +7,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.rowlocal.view.*
-import net.pableras.sichefbeta.R
 import net.pableras.sichefbeta.model.Receta
 
 class CustomAdapterLocal (val context: Context,

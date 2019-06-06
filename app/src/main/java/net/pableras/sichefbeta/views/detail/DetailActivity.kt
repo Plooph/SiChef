@@ -2,24 +2,21 @@ package net.pableras.sichefbeta.views.detail
 
 import android.content.Context
 import android.os.Bundle
-import android.support.constraint.solver.widgets.Snapshot
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.text.InputType
 import android.util.Log
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.FieldValue
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.app_bar_home.*
 import net.pableras.sichefbeta.R
 import net.pableras.sichefbeta.model.Comentario
 import net.pableras.sichefbeta.model.Receta
 import net.pableras.sichefbeta.model.User
-import net.pableras.sichefbeta.model.listComent
 import net.pableras.sichefbeta.views.detail.fragment.ItemFragment
 import net.pableras.sichefbeta.views.detail.fragment.RecetaFragment
 import net.pableras.sichefbeta.views.detail.ui.main.SectionsPagerAdapter
-import net.pableras.sichefbeta.views.home.HomeActivity
 import net.pableras.sichefbeta.views.nuevareceta.NewRecetaActivity
 import org.jetbrains.anko.*
 

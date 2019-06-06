@@ -24,9 +24,9 @@ import net.pableras.sichefbeta.model.Comentario
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class ItemFragment : Fragment() {
 
-    private lateinit var adapter: MyItemRecyclerViewAdapter
-    private lateinit var idrecet: String
+    //private lateinit var adapter: MyItemRecyclerViewAdapter
     private var columnCount = 1
+    private lateinit var idrecet: String
     private lateinit var comentarios: ArrayList<Comentario>
     private lateinit var data: Bundle
     lateinit var recetasFS: FirebaseFirestore
@@ -38,10 +38,9 @@ class ItemFragment : Fragment() {
 
 
         if (this.arguments != null){
-
             data = this.arguments!!
             idrecet = data.getString("comentarios")
-            Log.d("AATengoId",  idrecet)
+            //Log.d("AATengoId",  idrecet)
             getComentarios(idrecet)
         }else{
             Log.d("elBundledelfragment", "el data está vacio")
@@ -53,15 +52,14 @@ class ItemFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_item_list, container, false)
-        adapter = MyItemRecyclerViewAdapter()
 
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, comentarios.size)
+                    else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyItemRecyclerViewAdapter()
+                adapter = MyItemRecyclerViewAdapter(comentarios)
             }
         }
 
@@ -108,8 +106,7 @@ class ItemFragment : Fragment() {
                     comentarios.add(comentario)
                 }
             }
-            Log.d("AALosTengo",  comentarios.toString())
-            adapter.setComentarios(comentarios)
+            //Log.d("AALosTengo",  comentarios.toString())
         })
     }
 }
