@@ -1,11 +1,13 @@
 package net.pableras.sichefbeta.views.detail
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.WindowManager
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
@@ -23,17 +25,20 @@ import org.jetbrains.anko.*
 
 class DetailActivity : AppCompatActivity() {
 
+    private lateinit var usuario: User
     private lateinit var sectionsPagerAdapter: SectionsPagerAdapter
     lateinit var receta: Receta
     lateinit var recetasFS: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_detail)
 
         recetasFS = FirebaseFirestore.getInstance()
         receta = Receta()
         receta = intent.getSerializableExtra("receta") as Receta
+        getShareUser()
 
 
         sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
@@ -45,8 +50,16 @@ class DetailActivity : AppCompatActivity() {
         val tabs: TabLayout = findViewById(R.id.tabs)
         tabs.setupWithViewPager(viewPager)
 
-            fab.setOnClickListener { addComentario() }
+        botonVisible()
+        fab.setOnClickListener { addComentario() }
 
+    }
+
+    @SuppressLint("RestrictedApi", "WrongConstant")
+    private fun botonVisible() {
+        if (usuario.id != receta.uid){
+            fab.visibility = 1
+        }
     }
 
     private fun detalleReceta(viewPager: ViewPager) {
@@ -68,13 +81,17 @@ class DetailActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
     }
 
-    /***************************** GUARDAR UN COMENTARIO ********************************/
-
-    private fun addComentario() {
-
+    /***************************** OBTENER USUARIO ********************************/
+    fun getShareUser(){
+        usuario = User()
         val preferencias = getSharedPreferences("usuario", Context.MODE_PRIVATE)
         val jsonUser = preferencias.getString("usuarioSP","nosta")
-        val usuario: User = Gson().fromJson(jsonUser, User::class.java)
+        usuario = Gson().fromJson(jsonUser, User::class.java)
+    }
+    /***************************** OBTENER USUARIO ********************************/
+
+    /***************************** GUARDAR UN COMENTARIO ********************************/
+    private fun addComentario() {
         val nick = usuario.nick
 
         alert {

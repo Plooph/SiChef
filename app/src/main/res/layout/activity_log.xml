@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.auth.LogActivity">
+        tools:context=".views.auth.LogActivity"
+        android:background="@color/colorwhite">
 
     <EditText
             android:layout_width="0dp"
@@ -16,7 +17,9 @@
             android:layout_marginEnd="24dp" android:layout_marginRight="24dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp" android:layout_marginTop="24dp"
-            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/imageView5"/>
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            android:textColorHighlight="#FF5722" android:textColorLink="#FF5722"
+            android:textCursorDrawable="@color/colorBase"/>
     <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -30,7 +33,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="24dp"
             app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@+id/etemail"/>
+            app:layout_constraintTop_toBottomOf="@+id/etemail"
+            android:textColorHighlight="#FF5722" android:textColorLink="#FF5722"
+            android:textCursorDrawable="@color/colorBase"/>
     <Button
             android:text="@string/sing_in"
             android:textColor="@color/colorwhite"

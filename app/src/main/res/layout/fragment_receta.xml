@@ -29,8 +29,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv10" android:layout_weight="6"
-                        android:background="@color/colorBase"
-                        android:textColor="@color/colorwhite"
+                        android:background="@color/colorwhite"
+                        android:textColor="@color/colorBase"
                         android:textSize="24sp"
                         android:paddingVertical="@dimen/pading"/>
                 <TextView

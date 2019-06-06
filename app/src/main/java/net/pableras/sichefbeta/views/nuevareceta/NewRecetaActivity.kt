@@ -3,6 +3,7 @@ package net.pableras.sichefbeta.views.nuevareceta
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.WindowManager
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_new_receta.*
 import net.pableras.sichefbeta.R
@@ -21,6 +22,7 @@ class NewRecetaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_new_receta)
 
         user = intent.getSerializableExtra("user") as User
