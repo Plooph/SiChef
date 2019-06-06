@@ -20,6 +20,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.WindowManager
+import android.support.v7.widget.SearchView
 import android.widget.TextView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.EventListener
@@ -41,14 +42,15 @@ import net.pableras.sichefbeta.views.recetasnube.RecetasNubeActivity
 import org.jetbrains.anko.toast
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
+    RecyclerItemTouchHelper.RecyclerItemTouchHelperListener, SearchView.OnQueryTextListener {
     companion object {
         const val TAG = "pablerasChef"
     }
 
+    private lateinit var searchView: SearchView
+    private lateinit var recetasAL: ArrayList<Receta>
     private lateinit var adapter: CustomAdapterLocal
     lateinit var recetasFS: FirebaseFirestore
-
     lateinit var auth: FirebaseAuth
     private lateinit var user: User
     private lateinit var recetas: ArrayList<Receta>
@@ -109,8 +111,26 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.home, menu)
+        /***************************** FILTRO ********************************/
+        val searchItem = menu.findItem(R.id.app_bar_search)
+        searchView = searchItem.actionView as SearchView
+        searchView.queryHint = "Search..."
+        searchView.setOnQueryTextListener(this)
+        /***************************** FILTRO ********************************/
         return true
     }
+    /***************************** FILTRO ********************************/
+    override fun onQueryTextChange(query: String): Boolean {
+        recetas.clear()
+        recetas.addAll(recetasAL.filter { p -> p.title.contains(query) })
+        adapter.notifyDataSetChanged()
+        return false
+    }
+
+    override fun onQueryTextSubmit(text: String): Boolean {
+        return false
+    }
+    /***************************** FILTRO ********************************/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         // Handle action bar item clicks here. The action bar will
@@ -166,9 +186,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             recetas = ArrayList()
+            recetasAL = ArrayList()
             for (doc in value!!) {
                 val receta = doc.toObject(Receta::class.java)
                 recetas.add(receta)
+                recetasAL.add(receta)
                 //Log.d(TAG, recetas.toString())
             }
             pintarArray(recetas)
